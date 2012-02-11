@@ -27,7 +27,7 @@ key_id,key,factoid_id,fact,counter
 2,"compizconfig_einstellungs_manager",2,"\"<redir> ccsm\"",0
 48,"desktops",48,"Hier eine Übersicht über verwendbare Desktops unter Ubuntu: http://i.imgur.com/3N5f6.jpg",1
 35,"enter",35,"Enter ist kein Satzzeichen, versuche deine Sätze in so wenige Zeilen wie möglich zu packen.",1
-41,"foo",41,"narf",0
+41,"foo",41,"narfnarf",2
 45,"frag",45,"Frag nicht, ob du fragen darfst oder ob sich jemand auskennt. Stell einfach deine Frage – wenn jemand die Antwort kennt, wird er sie dir nennen",1
 31,"hcl",31,"HCL ist die Hardware Compatibility List. Siehe http://www.ubuntuhcl.org/ und https://wiki.ubuntu.com/HardwareSupport/ sowie http://wiki.ubuntuusers.de/Hardwaredatenbank",5
 55,"hda",52,"HDA-Soundkarten benötigen häufig zusätzliche Parameter für das Kernelmodul, um richtig zu funktionieren, siehe http://wiki.ubuntuusers.de/Soundkarten_konfigurieren/HDA",1

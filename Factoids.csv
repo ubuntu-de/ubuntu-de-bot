@@ -1,0 +1,55 @@
+key_id,key,factoid_id,fact,counter
+17,"APT",17,"Informationen zu APT finden sich im Wiki unter http://wiki.ubuntuusers.de/APT",0
+12,"Apache/Virtual_Hosts",12,"Informationen zu Apache/Virtual_Hosts finden sich im Wiki unter http://wiki.ubuntuusers.de/Apache/Virtual_Hosts",0
+13,"Apache/webdav",13,"Informationen zu Apache/webdav finden sich im Wiki unter http://wiki.ubuntuusers.de/Apache/webdav",2
+14,"AppArmor",14,"Informationen zu AppArmor finden sich im Wiki unter http://wiki.ubuntuusers.de/AppArmor",0
+15,"AppArmor/Profile_erstellen",15,"Informationen zu AppArmor/Profile_erstellen finden sich im Wiki unter http://wiki.ubuntuusers.de/AppArmor/Profile_erstellen",0
+16,"Apple_Computer/Einrichtung",16,"Informationen zu Apple_Computer/Einrichtung finden sich im Wiki unter http://wiki.ubuntuusers.de/Apple_Computer/Einrichtung",0
+3,"ESD",3,"http://wiki.ubuntuusers.de/ESD",0
+22,"Festival",22,"Informationen zu Festival finden sich im Wiki unter http://wiki.ubuntuusers.de/Festival",0
+23,"Festival/Kompilieren",23,"Informationen zu Festival/Kompilieren finden sich im Wiki unter http://wiki.ubuntuusers.de/Festival/Kompilieren",0
+25,"Festplatten-Geschwindigkeitstest",25,"Informationen zu Festplatten-Geschwindigkeitstest finden sich im Wiki unter http://wiki.ubuntuusers.de/Festplatten-Geschwindigkeitstest",0
+24,"Festplatten_Problembehebung",24,"Informationen zu Festplatten_Problembehebung finden sich im Wiki unter http://wiki.ubuntuusers.de/Festplatten_Problembehebung",0
+26,"Festplattenbelegung",26,"Informationen zu Festplattenbelegung finden sich im Wiki unter http://wiki.ubuntuusers.de/Festplattenbelegung",0
+10,"GNOME_Anwendungen_unter_KDE",10,"http://wiki.ubuntuusers.de/GNOME_Anwendungen_unter_KDE Es gibt unter Linux zwei sehr populaere GUI Toolkits. Das eine, von #",0
+33,"LetoThe2nd",33,"LetoThe2nd ist unser channeleigener Sandwurm/Diktator/Gottkaiser.",2
+9,"WineTools",9,"http://wiki.ubuntuusers.de/WineTools 'WineTools' ist ein Zusatzprogramm zu Wine, das aehnlich wie kommerzielle Wine-Derivate #wie Crossover Office oder Cedega# die Standard-Wine-Installation aufpeppt, um es kompatibler zu machen. Es enthaelt Skripte, die die Installation vieler Windows-Programme anpassen, so dass diese Programme dann korrekt unter Wine arbeiten. WineTools ist aber nur eine ",0
+27,"Xfce/Bildschirmfoto",27,"Informationen zu Xfce/Bildschirmfoto finden sich im Wiki unter http://wiki.ubuntuusers.de/Xfce/Bildschirmfoto",0
+30,"Xfmedia",30,"Informationen zu Xfmedia finden sich im Wiki unter http://wiki.ubuntuusers.de/Xfmedia",0
+44,"alias",44,"Mit alias definiert man Kurznamen für Befehlsaufrufe, siehe http://wiki.ubuntuusers.de/alias",2
+18,"apt-get",18,"Informationen zu apt-get finden sich im Wiki unter http://wiki.ubuntuusers.de/apt-get",28
+19,"apt-mirror",19,"Informationen zu apt-mirror finden sich im Wiki unter http://wiki.ubuntuusers.de/apt-mirror",0
+20,"apt/apt-cache",20,"Informationen zu apt/apt-cache finden sich im Wiki unter http://wiki.ubuntuusers.de/apt/apt-cache",0
+21,"apt/apt-get",21,"Informationen zu apt/apt-get finden sich im Wiki unter http://wiki.ubuntuusers.de/apt/apt-get",0
+49,"away",49,"Bitte verzichte auf Away-Nicks wie paul|essen, paul|afk, etc und automatische oeffentliche Bekanntgabe deiner Abwesenheit - viele im IRC finden es stoerend. Verwende doch einfach die Standard-Funktion im IRC: /away Grund der Abwesenheit",2
+36,"changinghost",36,"Setze <user:pw> als Serverpasswort, um direkt beim Verbinden mit dem Server deinen Cloak zu erhalten.",11
+42,"codecs",42,"Codecs werden zum Abspielen von Multimediadateien benötigt, siehe http://wiki.ubuntuusers.de/Codecs",1
+2,"compizconfig_einstellungs_manager",2,"\"<redir> ccsm\"",0
+48,"desktops",48,"Hier eine Übersicht über verwendbare Desktops unter Ubuntu: http://i.imgur.com/3N5f6.jpg",1
+35,"enter",35,"Enter ist kein Satzzeichen, versuche deine Sätze in so wenige Zeilen wie möglich zu packen.",1
+41,"foo",41,"narf",0
+45,"frag",45,"Frag nicht, ob du fragen darfst oder ob sich jemand auskennt. Stell einfach deine Frage – wenn jemand die Antwort kennt, wird er sie dir nennen",1
+31,"hcl",31,"HCL ist die Hardware Compatibility List. Siehe http://www.ubuntuhcl.org/ und https://wiki.ubuntu.com/HardwareSupport/ sowie http://wiki.ubuntuusers.de/Hardwaredatenbank",5
+55,"hda",52,"HDA-Soundkarten benötigen häufig zusätzliche Parameter für das Kernelmodul, um richtig zu funktionieren, siehe http://wiki.ubuntuusers.de/Soundkarten_konfigurieren/HDA",1
+46,"inchannel",46,"Support findet ausschliesslich hier in #ubuntu-de statt. So können alle was beitragen und gemeinsam Probleme lösen. Darüber hinaus gelten ungefragte Queries an Leute, die man nicht kennt, im IRC als ausgesprochen unhöflich.",1
+51,"knuddeloverflow",51,"Der Offtopic-Channel ist gedacht als Channel fuer die Leute aus #ubuntu-de und nicht als Knuddelz-Ersatz oder Singleboerse. Fuer Geknuddel und -flausche eignet sich beispielsweise ##knuddelkanal",1
+52,"knuddels",51,"Der Offtopic-Channel ist gedacht als Channel fuer die Leute aus #ubuntu-de und nicht als Knuddelz-Ersatz oder Singleboerse. Fuer Geknuddel und -flausche eignet sich beispielsweise ##knuddelkanal",1
+53,"knuddelz",51,"Der Offtopic-Channel ist gedacht als Channel fuer die Leute aus #ubuntu-de und nicht als Knuddelz-Ersatz oder Singleboerse. Fuer Geknuddel und -flausche eignet sich beispielsweise ##knuddelkanal",1
+34,"koegs",34,"Koegs ist einfach ein super-toller Kerl.",4
+11,"kp",11,"\"ein anderer Ausdruck fuer \\"",1
+39,"nopaste",39,"Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten (No)Paste-Service abgelegt werden. Nutze http://paste.ubuntuusers.de/",2
+38,"offtopic",38,"Dies ist ein Ubuntu-Supportchannel! Fuer Offtopic- und Stammtischgespraeche bitte #ubuntu-de-offtopic nutzen. Danke! ;)",4
+54,"ot",38,"Dies ist ein Ubuntu-Supportchannel! Fuer Offtopic- und Stammtischgespraeche bitte #ubuntu-de-offtopic nutzen. Danke! ;)",4
+4,"pangolin",4,"\"<redir> precise pangolin\"",0
+5,"playya",5,"\"der batman\"",0
+6,"pony",6,"\"<redir> shetlandpony\"",0
+1,"query",1,"reply",0
+43,"resetunity",43,"Mit `gconftool-2 --recursive-unset /apps/compiz-1` und `unity --reset` können Compiz und Unity auf die Standardeinstellungen zurückgesetzt werden.",1
+7,"shebang",7,"\"<reply> Siehe http://de.wikipedia.org/wiki/Shebang#Verwendung\"",0
+47,"sq",47,"So fragt man am besten: http://www.tty1.net/smart-questions_de.html",1
+50,"sshfs",50,"Details zu SSHFS hier: http://wiki.ubuntuusers.de/FUSE/sshfs",1
+8,"sysrq",8,"\"<redir> sysreq\"",0
+40,"systeminfo",40,"http://wiki.ubuntuusers.de/Systeminformationen_ermitteln",1
+37,"wf",37,"Um moeglichst gute Hilfe zu bekommen, nenne bitte folgendes beim Fragen: Was funktioniert nicht. Seit wann bzw. welchem Ereignis ist das so. Welche Programm-/Ubuntuversionen sind verwendet. Gibt es Fehlermeldungen. Wenn ja bitte in einen Nopaste (siehe Topic).",13
+28,"xfce4-power-manager",28,"Informationen zu xfce4-power-manager finden sich im Wiki unter http://wiki.ubuntuusers.de/xfce4-power-manager",0
+29,"xfig",29,"Informationen zu xfig finden sich im Wiki unter http://wiki.ubuntuusers.de/xfig",0

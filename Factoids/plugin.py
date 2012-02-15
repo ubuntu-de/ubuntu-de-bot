@@ -119,55 +119,65 @@ class Factoids(callbacks.Plugin, plugins.ChannelDBHandler):
         return super(Factoids, self).getCommandHelp(command, simpleSyntax)
 
     def learn(self, irc, msg, args, channel, key, factoid):
-        db = self.getDb(channel)
-        cursor = db.cursor()
-        
-        db = self.getDb(channel)
-        cursor = db.cursor()
-        if factoid[0:5] == "alias":
-            type = 2
-        else:
-            type = 1
-        if ircdb.users.hasUser(msg.prefix):
-            name = ircdb.users.getUser(msg.prefix).name
-        else:
-            name = msg.nick
-        cursor.execute("SELECT id FROM keys WHERE key LIKE %s", key)
-        if cursor.rowcount == 0:
-            key_exists = False
-        else:
-            key_exists = True
-        if(type == 1):
-            if key_exists == False:
-                cursor.execute("""INSERT INTO factoids VALUES (NULL, %s, %s, 0, %s)""", (name, int(time.time()), factoid))
-                db.commit()
-                factoid_id = db.insert_id()
-                cursor.execute("""INSERT INTO keys VALUES (NULL, %s, %s, 0)""", (key, factoid_id))
-                db.commit()
-                irc.reply("Key %s wurde hinzugefuegt!" % (key))
-            else:
-                if factoid[0:6] == "update":
-                    factoid = factoid[7:]
-                    cursor.execute("""SELECT factoid_id FROM factoids WHERE key LIKE %s""", key)
-                    db.commit()
-                    cursor.execute("""UPDATE factoids SET fact = %s WHERE id = %s""", (factoid, cursor.fetchone()[0]))
-                    db.commit()
-                    irc.reply("Key %s wurde erfolgreich geupdated!" % (key))
+        proceed = True
+        try:
+            user = ircdb.users.getUser(msg.prefix)
+        except:
+            proceed = False
+            pass
+        if proceed:
+            capabilities = list(user.capabilities)
+            if 'factoids' in capabilities or 'owner' in capabilities:
+                db = self.getDb(channel)
+                cursor = db.cursor()
+                if factoid[0:5] == "alias":
+                    type = 2
                 else:
-                    irc.error("Key %s existiert bereits!" % (key))
-        else:
-            if key_exists == True:
-                irc.error("Der Key %s existiert bereits." % (key))
-            else:
-                factoid = factoid[6:]
-                cursor.execute("SELECT factoid_id FROM keys WHERE key LIKE %s", factoid)
-                db.commit()
-                if cursor.rowcount == 1:
-                    factoid_id = cursor.fetchone()[0]
-                    cursor.execute("""INSERT INTO keys VALUES (NULL, %s, %s, 0)""", (key, factoid_id))
-                    irc.reply("Alias %s auf %s wurde erfolgreich hinzugefuegt." % (key, factoid))
+                    type = 1
+                if ircdb.users.hasUser(msg.prefix):
+                    name = ircdb.users.getUser(msg.prefix).name
                 else:
-                    irc.error("Der Alias kann nicht angelegt werden, weil er auf den Key %s zeigen soll, welcher nicht existiert." % factoid)
+                    name = msg.nick
+                cursor.execute("SELECT id FROM keys WHERE key LIKE %s", key)
+                if cursor.rowcount == 0:
+                    key_exists = False
+                else:
+                    key_exists = True
+                if(type == 1):
+                    if key_exists == False:
+                        cursor.execute("""INSERT INTO factoids VALUES (NULL, %s, %s, 0, %s)""", (name, int(time.time()), factoid))
+                        db.commit()
+                        factoid_id = db.insert_id()
+                        cursor.execute("""INSERT INTO keys VALUES (NULL, %s, %s, 0)""", (key, factoid_id))
+                        db.commit()
+                        irc.reply("Key %s wurde hinzugefuegt!" % (key))
+                    else:
+                        if factoid[0:6] == "update":
+                            factoid = factoid[7:]
+                            cursor.execute("""SELECT factoid_id FROM keys WHERE key LIKE %s""", key)
+                            db.commit()
+                            cursor.execute("""UPDATE factoids SET fact = %s WHERE id = %s""", (factoid, cursor.fetchone()[0]))
+                            db.commit()
+                            irc.reply("Key %s wurde erfolgreich geupdated!" % (key))
+                        else:
+                            irc.error("Key %s existiert bereits!" % (key))
+                else:
+                    if key_exists == True:
+                        irc.error("Der Key %s existiert bereits." % (key))
+                    else:
+                        factoid = factoid[6:]
+                        cursor.execute("SELECT factoid_id FROM keys WHERE key LIKE %s", factoid)
+                        db.commit()
+                        if cursor.rowcount == 1:
+                            factoid_id = cursor.fetchone()[0]
+                            cursor.execute("""INSERT INTO keys VALUES (NULL, %s, %s, 0)""", (key, factoid_id))
+                            irc.reply("Alias %s auf %s wurde erfolgreich hinzugefuegt." % (key, factoid))
+                        else:
+                            irc.error("Der Alias kann nicht angelegt werden, weil er auf den Key %s zeigen soll, welcher nicht existiert." % factoid)
+            else:
+                irc.reply('Du hast nicht die ausreichenden Rechte, dies zu tun. Bitte wende Dich an einen Admin.')
+        else:
+            irc.reply('Du hast nicht die ausreichenden Rechte, dies zu tun. Bitte wende Dich an einen Admin.')
     learn = wrap(learn, ['factoid'])
     learn._fake__doc__ = """[<channel>] <key> %s <value>
 
@@ -183,8 +193,7 @@ class Factoids(callbacks.Plugin, plugins.ChannelDBHandler):
             channel = msg.args[0]
             if self.registryValue('replyWhenInvalidCommand', channel):
                 key = ' '.join(tokens)
-                factoids = self._lookupFactoid(channel, key)
-                self._replyFactoids(irc, channel, key, factoids, error=False)
+                self.whatisRun(irc, channel, key)
 
     def whatis(self, irc, msg, args, channel, words):
         """[<channel>] <key> [<number>]
@@ -194,22 +203,33 @@ class Factoids(callbacks.Plugin, plugins.ChannelDBHandler):
         necessary if the message isn't sent in the channel itself.
         """
         key = " ".join(words)
+        self.whatisRun(irc, channel, key)
+    whatis = wrap(whatis, ['channel', many('something')])
+    
+    def whatisRun(self, irc, channel, key):
+        """ <key>
+
+        Looks up the value of <key> in the factoid database.
+        """
+        db = self.getDb(channel)
+        cursor = db.cursor()
         addressed_position = key.find(">", 0)
         if addressed_position > -1:
             adressed = key[addressed_position + 1:]
             key = key[:addressed_position - 1]
-        db = self.getDb(channel)
-        cursor = db.cursor()
-        cursor.execute("""SELECT fact FROM keys INNER JOIN factoids ON keys.factoid_id = factoids.id WHERE key = %s""", key)
+        cursor.execute("""SELECT factoids.id, factoids.fact, factoids.counter FROM keys INNER JOIN factoids ON keys.factoid_id = factoids.id WHERE key LIKE %s""", key)
         db.commit()
         if cursor.rowcount == 1:
+            result = cursor.fetchone()
+            cursor.execute("""UPDATE factoids SET counter = %s WHERE id = %s""", (result[2] + 1, result[0]))
+            db.commit()
             if addressed_position > -1:
-                irc.queueMsg(ircmsgs.privmsg(channel, str("%s: %s" % (adressed, cursor.fetchone()[0]))))
+                irc.queueMsg(ircmsgs.privmsg(channel, str("%s: %s" % (adressed, result[1]))))
                 irc.noReply()
             else:
-                irc.reply(cursor.fetchone()[0])
-    whatis = wrap(whatis, ['channel', many('something')])
-
+                irc.reply(result[1])
+        return 0
+    
     def lock(self, irc, msg, args, channel, key):
         """[<channel>] <key>
 

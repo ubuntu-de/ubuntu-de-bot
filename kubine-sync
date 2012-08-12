@@ -1,0 +1,7 @@
+cp /var/lib/supybot/data/#/Factoids.db /home/upload/ubuntu-de-bot/
+chown upload:upload /home/upload/ubuntu-de-bot/Factoids.db
+cd /home/upload/ubuntu-de-bot/
+su upload
+git add Factoids.db
+git commit -m 'auto-update-`date +%Y-%M-%d_%H-%M-%S`'
+git push origin master
